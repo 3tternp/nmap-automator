@@ -10,6 +10,8 @@ _chmod +x automate_nmap v2.sh_
 
 _sudo ./automate_nmap v2.sh_
 
+# current version Supports
+
 ✔ 🖥️ Simplified UI – Clearer output without unnecessary styling.
 
 ✔ 🚀 Optimized for Faster Execution – Still POSIX-compliant & lightweight.
