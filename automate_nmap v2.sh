@@ -13,7 +13,6 @@ mkdir -p "$OUTPUT_DIR"
 GREEN='\033[1;32m'
 RED='\033[1;31m'
 YELLOW='\033[1;33m'
-CYAN='\033[1;36m'
 RESET='\033[0m'
 
 # Function: Display ASCII Banner
@@ -22,7 +21,7 @@ show_banner() {
     echo "${CYAN}"
     echo "========================================"
     echo "  🚀 Interactive Nmap Automator 🚀"
-    echo "  Author: @caribpa (Enhanced by ChatGPT)"
+    echo "  Author:3tternp"
     echo "========================================"
     echo "${RESET}"
 }
