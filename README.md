@@ -34,8 +34,6 @@ _sudo ./automate_nmap v2.sh_
 
 ✔ Improved Error Handling & Stability
 
-✔ Retains Beautiful ASCII Banner & Progress Bar
-
 # Future Inhancement 
 
 ✅ Scan Scheduling (e.g., use cron for recurring scans)
