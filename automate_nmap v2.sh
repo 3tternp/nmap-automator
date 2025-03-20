@@ -1,6 +1,6 @@
 #!/bin/sh
 # =======================================
-#  🚀 Interactive Nmap Automator 🚀
+#  🚀 ASTRA Nmap Automator 🚀
 # =======================================
 # Features: Auto-installs missing tools, animated progress bar, and improved UI
 
@@ -10,7 +10,6 @@ mkdir -p "$OUTPUT_DIR"
 
 # Colors for better visibility
 RED='\033[1;31m'
-YELLOW='\033[1;33m'
 
 # Function: Display ASCII Banner
 show_banner() {
@@ -27,10 +26,9 @@ show_banner() {
     echo "========================================"
 }
 
-
 # Function: Check and Install Required Tools
 check_tools() {
-    for tool in nmap ffuf; do
+    for tool in nmap ffuf dirb; do
         if ! command -v "$tool" >/dev/null 2>&1; then
             echo "${YELLOW}[*] Installing missing tool: $tool..."
             if command -v apt >/dev/null 2>&1; then
@@ -45,6 +43,13 @@ check_tools() {
             fi
         fi
     done
+
+    # Ensure wordlist for ffuf exists
+    if [ ! -f /usr/share/wordlists/dirb/common.txt ]; then
+        echo "${YELLOW}[*] Downloading common.txt wordlist..."
+        sudo mkdir -p /usr/share/wordlists/dirb/
+        sudo wget -O /usr/share/wordlists/dirb/common.txt https://raw.githubusercontent.com/v0re/dirb/master/wordlists/common.txt
+    fi
 }
 
 # Function: Animated Progress Bar
@@ -129,3 +134,4 @@ main() {
 }
 
 main
+
