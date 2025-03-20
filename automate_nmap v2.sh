@@ -13,7 +13,6 @@ mkdir -p "$OUTPUT_DIR"
 GREEN='\033[1;32m'
 RED='\033[1;31m'
 YELLOW='\033[1;33m'
-RESET='\033[0m'
 
 # Function: Display ASCII Banner
 show_banner() {
