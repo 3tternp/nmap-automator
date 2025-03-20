@@ -13,9 +13,7 @@ mkdir -p "$OUTPUT_DIR"
 # Colors for better visibility
 GREEN='\033[1;32m'
 RED='\033[1;31m'
-CYAN='\033[1;36m'
 YELLOW='\033[1;33m'
-RESET='\033[0m'
 
 # Function: Display usage
 show_help() {
