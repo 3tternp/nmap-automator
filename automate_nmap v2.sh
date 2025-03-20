@@ -1,9 +1,8 @@
 #!/bin/sh
-
 # =======================================
-#  Interactive Nmap Automator 🚀
+#  🚀 Interactive Nmap Automator 🚀
 # =======================================
-# Features: Auto-installs missing tools, dynamic menu, and beautiful UI
+# Features: Auto-installs missing tools, animated progress bar, and improved UI
 
 # Default output directory
 OUTPUT_DIR="./nmap_results"
@@ -17,16 +16,23 @@ YELLOW='\033[1;33m'
 show_banner() {
     clear
     echo "========================================"
-    echo "  🚀 Interactive Nmap Automator 🚀"
-    echo "  Author:3tternp"
+    echo "       ✨ ASTRA Nmap Automator ✨       "
+    echo "========================================"
+    echo "        .        .        .            "
+    echo "     .      *         *      .         "
+    echo "  *      *     🌟     *      *        "
+    echo "     *       *       *     *           "
+    echo "  ------------------------------------  "
+    echo "     Secure the Stars with Nmap        "
     echo "========================================"
 }
+
 
 # Function: Check and Install Required Tools
 check_tools() {
     for tool in nmap ffuf; do
         if ! command -v "$tool" >/dev/null 2>&1; then
-            echo "${YELLOW}[*] Installing missing tool: $tool...${RESET}"
+            echo "${YELLOW}[*] Installing missing tool: $tool..."
             if command -v apt >/dev/null 2>&1; then
                 sudo apt update && sudo apt install -y "$tool"
             elif command -v yum >/dev/null 2>&1; then
@@ -34,25 +40,26 @@ check_tools() {
             elif command -v brew >/dev/null 2>&1; then
                 brew install "$tool"
             else
-                echo "${RED}[-] Package manager not detected. Please install $tool manually.${RESET}"
+                echo "${RED}[-] Package manager not detected. Please install $tool manually."
                 exit 1
             fi
         fi
     done
 }
 
-# Function: Display a progress bar
+# Function: Animated Progress Bar
 progress_bar() {
     local duration=$1
     local bar_length=30
-    local increment=$((duration / bar_length))
+    local completed=0
 
-    printf "${YELLOW}["
-    for _ in $(seq 1 "$bar_length"); do
+    echo -ne "${YELLOW}["
+    while [ "$completed" -lt "$bar_length" ]; do
         printf "#"
-        sleep "$increment"
+        sleep 0.1  
+        completed=$((completed + 1))
     done
-    printf "] Done!${RESET}\n"
+    echo -e "] 100%\n"
 }
 
 # Function: Save scan output with timestamps
@@ -67,7 +74,7 @@ run_scan() {
     local scan_name="$1"
     local scan_command="$2"
     
-    echo "${GREEN}[+] Running $scan_name Scan...${RESET}"
+    echo "[+] Running $scan_name Scan..."
     progress_bar 5
     
     results=$(eval "$scan_command")
@@ -76,14 +83,14 @@ run_scan() {
 
 # Function: User selects target
 get_target() {
-    echo "${CYAN}Enter target IP or domain:${RESET}"
+    echo "Enter target IP or domain:"
     read -r TARGET
-    [ -z "$TARGET" ] && { echo "${RED}No target provided. Exiting.${RESET}"; exit 1; }
+    [ -z "$TARGET" ] && { echo "${RED}No target provided. Exiting."; exit 1; }
 }
 
 # Function: User selects scans
 choose_scans() {
-    echo "${CYAN}Choose scan types (separate multiple choices with spaces):${RESET}"
+    echo "Choose scan types (separate multiple choices with spaces):"
     echo "1) Full Scan"
     echo "2) Port Scan"
     echo "3) UDP Scan"
@@ -105,8 +112,8 @@ execute_scans() {
             4) run_scan "Recon" "nmap -A $TARGET" ;;
             5) run_scan "HTTP Fuzzing" "ffuf -w /usr/share/wordlists/dirb/common.txt -u \"http://$TARGET/FUZZ\"" ;;
             6) run_scan "Network Discovery" "nmap -sn $TARGET" ;;
-            7) echo "${YELLOW}Exiting.${RESET}"; exit 0 ;;
-            *) echo "${RED}Invalid selection: $scan${RESET}" ;;
+            7) echo "${YELLOW}Exiting."; exit 0 ;;
+            *) echo "${RED}Invalid selection: $scan" ;;
         esac
     done
 }
@@ -118,8 +125,7 @@ main() {
     get_target
     choose_scans
     execute_scans
-    echo "${CYAN}[+] Scans Completed! Results saved in $OUTPUT_DIR.${RESET}"
+    echo "[+] Scans Completed! Results saved in $OUTPUT_DIR."
 }
 
 main
-
