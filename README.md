@@ -12,13 +12,13 @@ _sudo ./automate_nmap v2.sh_
 
 # current version Supports
 
-✔ 🖥️ Simplified UI – Clearer output without unnecessary styling.
+✔  Simplified UI – Clearer output without unnecessary styling.
 
-✔ 🚀 Optimized for Faster Execution – Still POSIX-compliant & lightweight.
+✔  Optimized for Faster Execution – Still POSIX-compliant & lightweight.
 
-✔ 🔄 Maintains All Key Features – Auto-installs tools, progress bar, result saving.
+✔  Maintains All Key Features – Auto-installs tools, progress bar, result saving.
 
-✔ 📁 Saves Scan Results with Timestamps – Well-organized results.
+✔ Saves Scan Results with Timestamps – Well-organized results.
 
 ✔ Beautiful Banner & UI → Clean, visually appealing interface
 
