@@ -1,10 +1,10 @@
 # nmap-automator
 
-**Clone the repository as **
+## Clone the repository as
 
 _git clone https://github.com/3tternp/nmap-automator/_
 
-_cd nmap-automator/ _
+_cd nmap-automator/_
 
 _chmod +x automate_nmap v2.sh_
 
