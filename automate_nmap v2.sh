@@ -3,7 +3,7 @@
 # =======================================
 #  Interactive Nmap Automator 🚀
 # =======================================
-# Features: User selects scan types interactively, results saved, and POSIX compliant.
+# Features: Auto-installs missing tools, dynamic menu, and beautiful UI
 
 # Default output directory
 OUTPUT_DIR="./nmap_results"
@@ -13,15 +13,35 @@ mkdir -p "$OUTPUT_DIR"
 GREEN='\033[1;32m'
 RED='\033[1;31m'
 YELLOW='\033[1;33m'
+CYAN='\033[1;36m'
 RESET='\033[0m'
 
-# Function: Check for required tools
+# Function: Display ASCII Banner
+show_banner() {
+    clear
+    echo "${CYAN}"
+    echo "========================================"
+    echo "  🚀 Interactive Nmap Automator 🚀"
+    echo "  Author: @caribpa (Enhanced by ChatGPT)"
+    echo "========================================"
+    echo "${RESET}"
+}
+
+# Function: Check and Install Required Tools
 check_tools() {
     for tool in nmap ffuf; do
         if ! command -v "$tool" >/dev/null 2>&1; then
-            echo "${RED}[-] Missing tool: $tool${RESET}"
-            echo "[-] Install missing tools before running the script."
-            exit 1
+            echo "${YELLOW}[*] Installing missing tool: $tool...${RESET}"
+            if command -v apt >/dev/null 2>&1; then
+                sudo apt update && sudo apt install -y "$tool"
+            elif command -v yum >/dev/null 2>&1; then
+                sudo yum install -y "$tool"
+            elif command -v brew >/dev/null 2>&1; then
+                brew install "$tool"
+            else
+                echo "${RED}[-] Package manager not detected. Please install $tool manually.${RESET}"
+                exit 1
+            fi
         fi
     done
 }
@@ -98,6 +118,7 @@ execute_scans() {
 
 # Main function
 main() {
+    show_banner
     check_tools
     get_target
     choose_scans
@@ -106,3 +127,4 @@ main() {
 }
 
 main
+
