@@ -20,21 +20,21 @@ _sudo ./automate_nmap v2.sh_
 
 ✔ 📁 Saves Scan Results with Timestamps – Well-organized results.
 
-✅ Beautiful Banner & UI → Clean, visually appealing interface
+✔ Beautiful Banner & UI → Clean, visually appealing interface
 
-✅ Progress Bar → Keeps users engaged during scans
+✔ Progress Bar → Keeps users engaged during scans
 
-✅ Fully Interactive → Easy selection of scan types
+✔ Fully Interactive → Easy selection of scan types
 
-✅ Automatic Logging → Saves results for future reference
+✔ Automatic Logging → Saves results for future reference
 
-✅ Automatically Installs dirb if it’s missing
+✔ Automatically Installs dirb if it’s missing
 
-✅ Downloads common.txt Wordlist if it's not found
+✔ Downloads common.txt Wordlist if it's not found
 
-✅ Improved Error Handling & Stability
+✔ Improved Error Handling & Stability
 
-✅ Retains Beautiful ASCII Banner & Progress Bar
+✔ Retains Beautiful ASCII Banner & Progress Bar
 
 # Future Inhancement 
 
