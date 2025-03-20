@@ -16,12 +16,10 @@ YELLOW='\033[1;33m'
 # Function: Display ASCII Banner
 show_banner() {
     clear
-    echo "${CYAN}"
     echo "========================================"
     echo "  🚀 Interactive Nmap Automator 🚀"
     echo "  Author:3tternp"
     echo "========================================"
-    echo "${RESET}"
 }
 
 # Function: Check and Install Required Tools
