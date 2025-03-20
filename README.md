@@ -1,4 +1,4 @@
-# nmap-automator
+# Nmap-Automator
 
 ## Clone the repository as
 
