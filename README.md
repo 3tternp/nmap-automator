@@ -2,10 +2,13 @@
 
 **Clone the repository as **
 
-_git clone https://github.com/3tternp/nmap-automator/
-cd nmap-automator/ 
-chmod +x automate_nmap v2.sh
-sudo ./automate_nmap v2.sh_
+_git clone https://github.com/3tternp/nmap-automator/_
+
+_cd nmap-automator/ _
+
+_chmod +x automate_nmap v2.sh_
+
+_sudo ./automate_nmap v2.sh_
 
 ✔ 🖥️ Simplified UI – Clearer output without unnecessary styling.
 
@@ -31,7 +34,7 @@ sudo ./automate_nmap v2.sh_
 
 ✅ Retains Beautiful ASCII Banner & Progress Bar
 
-##Future Inhancement 
+# Future Inhancement 
 
 ✅ Scan Scheduling (e.g., use cron for recurring scans)
 
