@@ -113,7 +113,13 @@ execute_scans() {
     for scan in $SCAN_SELECTION; do
         case $scan in
              1) run_scan "Full" "nmap -p- -A $TARGET" ;;
-            2) run_scan "List_Input" "nmap -p- -iL input_list.txt" ;;
+             2) echo "Enter the path to the input list file:" 
+                read -r INPUT_LIST
+                if [[ -f "$INPUT_LIST" ]]; then
+                    run_scan "List_Input" "nmap -p- -iL $INPUT_LIST" 
+                else
+                    echo "${RED}File not found: $INPUT_LIST" 
+                fi ;;
             3) run_scan "Port" "nmap -p- $TARGET" ;;
             4) run_scan "UDP" "nmap -sU $TARGET" ;;
             5) run_scan "Recon" "nmap -A $TARGET" ;;
