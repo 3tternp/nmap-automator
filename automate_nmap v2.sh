@@ -95,14 +95,15 @@ get_target() {
 
 # Function: User selects scans
 choose_scans() {
-    echo "Choose scan types (separate multiple choices with spaces):"
+   echo "Choose scan types (separate multiple choices with spaces):"
     echo "1) Full Scan"
-    echo "2) Port Scan"
-    echo "3) UDP Scan"
-    echo "4) Recon Scan"
-    echo "5) HTTP Fuzzing"
-    echo "6) Network Discovery"
-    echo "7) Exit"
+    echo "2) Full Scan from Input list"
+    echo "3) Port Scan"
+    echo "4) UDP Scan"
+    echo "5) Recon Scan"
+    echo "6) HTTP Fuzzing"
+    echo "7) Network Discovery"
+    echo "8) Exit"
 
     read -r SCAN_SELECTION
 }
@@ -111,13 +112,14 @@ choose_scans() {
 execute_scans() {
     for scan in $SCAN_SELECTION; do
         case $scan in
-            1) run_scan "Full" "nmap -p- -A $TARGET" ;;
-            2) run_scan "Port" "nmap -p- $TARGET" ;;
-            3) run_scan "UDP" "nmap -sU $TARGET" ;;
-            4) run_scan "Recon" "nmap -A $TARGET" ;;
-            5) run_scan "HTTP Fuzzing" "ffuf -w /usr/share/wordlists/dirb/common.txt -u \"http://$TARGET/FUZZ\"" ;;
-            6) run_scan "Network Discovery" "nmap -sn $TARGET" ;;
-            7) echo "${YELLOW}Exiting."; exit 0 ;;
+             1) run_scan "Full" "nmap -p- -A $TARGET" ;;
+            2) run_scan "List_Input" "nmap -p- -iL input_list.txt" ;;
+            3) run_scan "Port" "nmap -p- $TARGET" ;;
+            4) run_scan "UDP" "nmap -sU $TARGET" ;;
+            5) run_scan "Recon" "nmap -A $TARGET" ;;
+            6) run_scan "HTTP Fuzzing" "ffuf -w /usr/share/wordlists/dirb/common.txt -u \"http://$TARGET/FUZZ\"" ;;
+            7) run_scan "Network Discovery" "nmap -sn $TARGET" ;;
+            8) echo "${YELLOW}Exiting."; exit 0 ;;
             *) echo "${RED}Invalid selection: $scan" ;;
         esac
     done
